@@ -1,0 +1,26 @@
+{
+  "name": "hospital",
+  "version": "1.0.0",
+  "description": "no",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start:dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kazybekov/Hospital.git"
+  },
+  "author": "Yersin Kazybekov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kazybekov/Hospital/issues"
+  },
+  "homepage": "https://github.com/Kazybekov/Hospital#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.7.0",
+    "nodemon": "^2.0.20"
+  }
+}
