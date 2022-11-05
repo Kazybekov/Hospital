@@ -1,0 +1,131 @@
+*{
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+body{
+ /* height: 100vh;*/
+  background: linear-gradient(135deg, #fff, #7FFFD4, #fff);
+
+}
+
+header{
+ background-color: linear-gradient(135deg, #fff, #7FFFD4, #fff);
+ width: 100%;
+ height: 50px;
+ line-height: 50px;
+ padding-left: 20px;
+ color: #043969;
+ font-weight: 700;
+ font-size: 22px;
+ margin-bottom: 0px;
+ 
+}
+
+#container1{
+  
+  width: 80%;
+  height: 50px;
+  line-height: 50px;
+  background-color: #043969; 
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 22px;
+  margin: 0 auto;
+  
+}
+
+#container2{
+  width: 80%;
+  height: 300px;
+  background-color: #fff; 
+  margin: 0 auto;
+  padding: 10px 10px 10px 10px;
+  display: flex;
+}
+
+#block1{
+  background-color: fff; 
+  width: 42%;
+  height: 100%;
+  text-align: center;
+}
+
+#block2{
+  background-color: #fff;
+  width: 52%;
+  height: 100%;
+  margin-left: 6%;
+  font-weight: 600;
+  font-size: 18px;
+  color: #043969;
+  border-style: dotted;
+  border-color: #043969;
+}
+li {
+	padding-bottom: 20px;
+}
+
+#container3{
+  width: 80%;
+  height: 80px;
+  line-height: 80px;
+  background-color: #043969;
+  margin: 0 auto;
+  display: flex;
+  border-style: dotted;
+  border-color: #043969;
+}
+#block3{
+  background-color: #fff; 
+  width: 50%;
+  height: 100%;
+  line-height: 80px;
+  text-align: center;
+  padding-top: 13px;
+}
+
+#block4{
+  background-color: #fff;
+  width: 50%;
+  height: 100%;
+  line-height: 80px;
+  text-align: center;
+  padding-top: 13px;
+}
+button {
+   height: 50px;
+   width: 200px;
+   border-radius: 5px;
+   border: none;
+   color: #043969;
+   font-size: 21px;
+   font-weight: 600;
+   cursor: pointer;
+   background:  #7FFFD4;
+    
+ }
+#container4{
+  width: 80%;
+  height: 150px;
+  line-height: 150px;
+  margin: 0 auto;
+  display: flex;
+  border-style: dotted;
+  border-color: #043969;
+}
+#container5{
+  width: 80%;
+  height: 150px;
+  line-height: 150px;
+  margin: 0 auto;
+  display: flex;
+  border-style: dotted;
+  border-color: #043969;
+}
+
+a{
+  font-size: 21px;
+  font-weight: 600;
+  margin-left: 130px;
+}
