@@ -2,16 +2,16 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="styleadminpage.css">
+		<link rel="stylesheet" href="/styleadminpage.css">
 	</head>
 	<body>
 		<header>
 			<div>
-				<a href="index.html">DenSys.me</a>
+				<a href="/">DenSys.me</a>
 			</div>
 		</header>
 		<div class = "container" id = "container1">
-			<span> Admin page </span>
+			<a> Admin page </a>
 		</div>
 		<div class = "container" id = "container2">
 			<div class = "block" id = "block1">
@@ -31,23 +31,20 @@
 		</div>
 		<div class = "container" id = "container3" >
 			<div class = "block" id = "block3" >
-				<button onclick="location.href='registrationdoctor.html'" class="button button1"> Register Doctor</button>
+				<button onclick="location.href='/registerdoctor'" class="button button1"> Register Doctor</button>
 			</div>
 			<div class = "block" id = "block4">
-				<button onclick="location.href='registrationpatient.html'" class="button button2" >Register Patient</button>
+				<button onclick="location.href='/registerpatient'" class="button button2" >Register Patient</button>
 			</div>
         </div>
-		<br/>
-		<span class = "text"> Doctors <button class = "edit">Edit</button></span>
+
+		<a> Doctors </a>
 		<div class = "container" id = "container4" >
-			<div class = briefview><span> Doctor 1 <button onclick="location.href='viewdoctor.html'" class = "view">View</button></span></div>
+
         </div>
-		<br/>
-		<span class = "text"> Patients <button class = "edit">Edit</button></span>
+		<a> Patients </a>
 		<div class = "container" id = "container5" >
-			<div class = briefview><span> Patient 1 <button onclick="location.href='viewpatient.html'" class = "view">View</button></span></div>
-        </div>
-		
+
         </div>
 	</body>
 </html>

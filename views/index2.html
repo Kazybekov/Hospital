@@ -8,18 +8,18 @@
 <div class="container">
     <div class="title">Login</div>
     <div class="content">
-      <form action="#">
-        <div class="user-details">
+      <form action="/users/login" method="post">
+        <div class="user-details" >
           <div class="input-box">
             <span class="details">User ID</span>
-            <input type="text" placeholder="Enter your user ID" required>
+            <input name="login" type="text" placeholder="Enter your user ID" required>
           </div>
           <div class="input-box">
             <span class="details">Password</span>
-            <input type="text" placeholder="Enter your password" required>
-          </div>   
+            <input name="password" type="text" placeholder="Enter your password" required>
+          </div>
         <div class="button">
-          <input type="submit" value="Login">
+          <input type="submit"  value="Login">
         </div>
       </form>
     </div>
