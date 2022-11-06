@@ -93,7 +93,7 @@ li {
   text-align: center;
   padding-top: 13px;
 }
-button {
+.block button {
    height: 50px;
    width: 200px;
    border-radius: 5px;
@@ -128,4 +128,23 @@ a{
   font-size: 21px;
   font-weight: 600;
   margin-left: 130px;
+}
+
+span{
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  margin-left: 150px;
+}
+
+span button {
+  margin-left: 15px;
+  margin-bottom: 10px;
+  background-color: #7FFFD4;
+  color:#043969;
+  text-transform: capitalize;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 200;
 }
