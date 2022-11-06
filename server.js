@@ -21,6 +21,7 @@ const initializePassport = require("./passportConfig");
 // Parses details from a form
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static(__dirname + '/public'));
 //app.set("front", "ejs");
 
 //app.set('view engine', 'ejs');
@@ -59,6 +60,154 @@ app.get("/registerdoctor", (req, res) => {
 app.get("/registerpatient", (req, res) => {
   res.render("registrationpatient.html");
 });
+
+// Admin login
+
+app.post("/users/login", async (req,res)=>{
+
+  let log={
+    login:req.body.login,
+    password:req.body.password
+  }
+
+  console.log(log.login+" "+log.password);
+
+
+  pool.query('(select * from admin where tname=$1 and tpassword=$2)', [log.login,log.password],(err,res2)=>{
+
+    if(err){
+      console.log(err);
+    }
+    try{
+      if(res2.rows[0].tname==log.login && res2.rows[0].tpassword==log.password){
+        res.render("adminpage.html");
+      }
+    }catch{
+      // alert("wrong data");
+      res.render("index2.html");
+    }
+  });
+
+// doctor register
+
+app.post("/register/doctor", async (req, res) => {
+
+  console.log("yeah");
+  let data={
+    bdate:req.body.bdate,
+    iin:req.body.iin,
+    id:req.body.id,
+    name:req.body.name,
+    surname:req.body.surname,
+    middlename:req.body.middlename,
+    number:req.body.number,
+    department_id:req.body.department_id,
+    spec_id:req.body.spec_id,
+    experience:req.body.experience,
+    photo:req.body.photo,
+    category:req.body.category,
+    price:req.body.price,
+    schedule:req.body.schedule,
+    degree:req.body.degree,
+    radio:req.body.radio,
+    adress:req.body.adress,
+    url:req.body.url,
+  }
+  pool.query(
+      `SELECT * FROM doctor
+        WHERE tiin = $1`,
+      [data.iin],
+      (err, results) => {
+        if (err) {
+          console.log(err);
+        }
+
+    if (results.rows.length > 0) {
+          return res.render("/", {
+            message: "Email already registered"
+          });
+    } else {
+
+          pool.query(
+            `INSERT INTO doctor (tbirthdate, tiin, tid,tname , tsurname, tmiddlename, tcontact,tdepid ,tspecdetid ,texpirience
+               ,tphoto ,tcategory, tprice ,tschedule , tdegree ,trating ,taddress,turl )
+                VALUES ($1, $2, $3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18)
+                RETURNING tname,tiin`,
+            [data.bdate,data.iin,data.id,
+              data.name,data.surname,data.middlename,
+              data.number,data.department_id,data.spec_id,
+              data.experience,data.photo,data.category,
+              data.price,data.schedule,data.degree,
+              data.radio,data.adress,data.url],
+            (err, results) => {
+              if (err) {
+                throw err;
+              }
+              req.flash("success_msg", "Doctor was registered");
+              res.render("adminpage.html");
+            }
+          );
+        }
+      }
+    );
+});
+
+
+app.post("/register/patient", async (req, res) => {
+
+  console.log("yeah");
+  let data={
+    bdate:req.body.bdate,
+    iin:req.body.iin,
+    id:req.body.id,
+    name:req.body.name,
+    surname:req.body.surname,
+    middlename:req.body.middlename,
+    bloodgroup:req.body.bloodgroup,
+    contact_e:req.body.contact_e,
+    contact:req.body.contact,
+    email:req.body.email,
+    adress:req.body.adress,
+    marital:req.body.marital,
+    reg_date:req.body.reg_date,
+  }
+  pool.query(
+      `SELECT * FROM patient
+        WHERE tiin = $1`,
+      [data.iin],
+      (err, results) => {
+        if (err) {
+          console.log(err);
+        }
+
+    if (results.rows.length > 0) {
+          return res.render("/", {
+            message: "Patient already registered"
+          });
+    } else {
+
+          pool.query(
+            `INSERT INTO patient (tbirthdate , tiin , tid , tname , tsurname , tmiddlename ,tblood , temergencycontact , tcontact , temail , tadress , tmaritalstatus , tregistrationdate )
+                VALUES ($1, $2, $3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)`,
+            [data.bdate,data.iin,data.id,
+              data.name,data.surname,data.middlename,
+              data.bloodgroup,data.contact_e,data.contact,
+              data.email,data.adress,data.marital,
+              data.reg_date],
+            (err, results) => {
+              if (err) {
+                throw err;
+              }
+              req.flash("success_msg", "Patient was registered");
+              res.render("adminpage.html");
+            }
+          );
+        }
+      }
+    );
+});
+
+
 
 // app.get("/users/register", checkAuthenticated, (req, res) => {
 //   res.render("register.ejs");
@@ -153,30 +302,6 @@ app.get("/registerpatient", (req, res) => {
 //   }
 // });
 
-app.post("/users/login", async (req,res)=>{
-
-  let log={
-    login:req.body.login,
-    password:req.body.password
-  }
-
-  console.log(log.login+" "+log.password);
-
-
-  pool.query('(select * from admin where tname=$1 and tpassword=$2)', [log.login,log.password],(err,res2)=>{
-
-    if(err){
-      console.log(err);
-    }
-    try{
-      if(res2.rows[0].tname==log.login && res2.rows[0].tpassword==log.password){
-        res.render("adminpage.html");
-      }
-    }catch{
-      //alert("wrong data");
-      res.render("index2.html");
-    }
-  });
 
 
 });

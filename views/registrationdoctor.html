@@ -2,122 +2,122 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="stylelogin.css">
+		<link rel="stylesheet" href="/css/stylelogin.css">
 	</head>
 	<body>
 		<div class="container">
 			<div class="title">Registration for doctor</div>
 				<div class="content">
-					<form action="#">
+					<form action="/register/doctor" method="post">
 						<div class="user-details">
 							<div class="input-box">
 								<span class="details">Date of birth</span>
-								<input type="date" required>
+								<input name="bdate" type="date" required>
 							</div>
 							<div class="input-box">
 								<span class="details">IIN number</span>
-								<input type="text" placeholder="Enter doctor's IIN number" required>
+								<input name="iin" type="text" placeholder="Enter doctor's IIN number" required>
 							</div>
 							<div class="input-box">
 								<span class="details">ID number</span>
-								<input type="text" placeholder="Enter doctor's ID number" required>
+								<input name="id" type="text" placeholder="Enter doctor's ID number" required>
 							</div>
 							<div class="input-box">
 								<span class="details">Name</span>
-								<input type="text" placeholder="Enter doctor's name" required>
+								<input  name="name" type="text" placeholder="Enter doctor's name" required>
 							</div>
 							<div class="input-box">
 								<span class="details">Surname</span>
-								<input type="text" placeholder="Enter doctor's surname" required>
+								<input  name="surname" type="text" placeholder="Enter doctor's surname" required>
 							</div>
 							<div class="input-box">
 								<span class="details">Middlename</span>
-								<input type="text" placeholder="Enter doctor's middlename" required>
+								<input  name="middlename" type="text" placeholder="Enter doctor's middlename" required>
 							</div>
 							<div class="input-box">
 								<span class="details">Contact number</span>
-								<input type="text" placeholder="Enter doctor's contact number" required>
+								<input  name="number" type="text" placeholder="Enter doctor's contact number" required>
 							</div>
 							<div class="input-box">
 								<span class="details">Department ID</span>
-								<input type="text" placeholder="Enter doctor's department ID" required>
+								<input  name="department_id" type="text" placeholder="Enter doctor's department ID" required>
 							</div>
 							<div class="input-box">
 								<span class="details">Specialization details ID</span>
-								<input type="text" placeholder="Enter doctor's specialization details ID" required>
+								<input  name="spec_id" type="text" placeholder="Enter doctor's specialization details ID" required>
 							</div>
 							<div class="input-box">
 								<span class="details">Expetrience in years</span>
-								<input type="text" placeholder="Enter doctor's experience in years" required>
+								<input  name="experience" type="text" placeholder="Enter doctor's experience in years" required>
 							</div>
 							<div class="details">
 								<span class="details">Photo of the doctor</span> <br> <br>
-								<input type="file" accept="image/*" required>
+								<input  name="photo" type="file" accept="image/*" required>
 							</div>
 							<div class="input-box">
 								<span class="details">Category</span>
-								<input type="text" placeholder="Enter doctor's category" required>
+								<input  name="category" type="text" placeholder="Enter doctor's category" required>
 							</div>
 							<div class="input-box">
 								<span class="details">Price of the appointment</span>
-								<input type="text" placeholder="Enter price of the appointment" required>
+								<input  name="price" type="text" placeholder="Enter price of the appointment" required>
 							</div>
 							<div class="input-box">
 								<span class="details">Schedule details</span>
-								<input type="text" placeholder="Enter doctor's schedule details" required>
+								<input  name="schedule" type="text" placeholder="Enter doctor's schedule details" required>
 							</div>
 							<div class="input-box">
 								<span class="details">Degree/education(MD, PhD, etc.)</span>
-								<input type="text" placeholder="Enter doctor's degree/education" required>
+								<input  name="degree" type="text" placeholder="Enter doctor's degree/education" required>
 							</div>
 							<div class="input-box">
 								<span class="details">Rating</span>
-										
+
 									<div class="form_radio_btn">
 										<input id="radio-1" type="radio" name="radio" value="1" checked>
 										<label for="radio-1">1</label>
 									</div>
- 
+
 									<div class="form_radio_btn">
 										<input id="radio-2" type="radio" name="radio" value="2">
 										<label for="radio-2">2</label>
 									</div>
- 
+
 									<div class="form_radio_btn">
 										<input id="radio-3" type="radio" name="radio" value="3">
 										<label for="radio-3">3</label>
 									</div>
-									
+
 									<div class="form_radio_btn">
 										<input id="radio-4" type="radio" name="radio" value="4">
 										<label for="radio-4">4</label>
 									</div>
- 
+
 									<div class="form_radio_btn">
 										<input id="radio-5" type="radio" name="radio" value="5">
 										<label for="radio-5">5</label>
 									</div> <br>
- 
+
 									<div class="form_radio_btn">
 										<input id="radio-6" type="radio" name="radio" value="6">
 										<label for="radio-6">6</label>
 									</div>
-									
+
 									<div class="form_radio_btn">
 										<input id="radio-7" type="radio" name="radio" value="7">
 										<label for="radio-7">7</label>
 									</div>
- 
+
 									<div class="form_radio_btn">
 										<input id="radio-8" type="radio" name="radio" value="8">
 										<label for="radio-8">8</label>
 									</div>
- 
+
 									<div class="form_radio_btn">
 										<input id="radio-9" type="radio" name="radio" value="9">
 										<label for="radio-9">9</label>
 									</div>
-									
+
 									<div class="form_radio_btn">
 										<input id="radio-10" type="radio" name="radio" value="10">
 										<label for="radio-10">10</label>
@@ -125,16 +125,16 @@
 							</div>
 							<div class="input-box">
 								<span class="details">Address</span>
-								<input type="text" placeholder="Enter doctor's address" required>
+								<input name="address"  type="text" placeholder="Enter doctor's address" required>
 							</div>
 							<div class="input-box">
 								<span class="details">Homepage url</span>
-								<input type="text" placeholder="Enter doctor's homepage url">
+								<input  name="url" type="text" placeholder="Enter doctor's homepage url">
 							</div>
 							<div class="button">
 								<input type="submit" value="Register">
 							</div>
-						</div>	
+						</div>
 					</form>
 					<div id = "containr">
 						<a href = "registrationpatient.html">Registration for Patient</a>

@@ -2,71 +2,71 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="stylelogin.css">
+		<link rel="stylesheet" href="/css/stylelogin.css">
 	</head>
 	<body>
 		<div class="container">
 			<div class="title">Registration for patient</div>
 				<div class="content">
-					<form action="#">
+					<form action="/register/patient" method="post">
 						<div class="user-details">
 							<div class="input-box">
 								<span class="details">Date of birth</span>
-								<input type="date" required>
+								<input name= "bdate" type="date" required>
 							</div>
 							<div class="input-box">
 								<span class="details">IIN number</span>
-								<input type="text" placeholder="Enter patient's IIN number" required>
+								<input  name= "iin" type="text" placeholder="Enter patient's IIN number" required>
 							</div>
 							<div class="input-box">
 								<span class="details">ID number</span>
-								<input type="text" placeholder="Enter patient's ID number" required>
+								<input name= "id"  type="text" placeholder="Enter patient's ID number" required>
 							</div>
 							<div class="input-box">
 								<span class="details">Name</span>
-								<input type="text" placeholder="Enter patient's name" required>
+								<input name= "name"  type="text" placeholder="Enter patient's name" required>
 							</div>
 							<div class="input-box">
 								<span class="details">Surname</span>
-								<input type="text" placeholder="Enter patient's surname" required>
+								<input  name= "surname" type="text" placeholder="Enter patient's surname" required>
 							</div>
 							<div class="input-box">
 								<span class="details">Middlename</span>
-								<input type="text" placeholder="Enter patient's middlename" required>
+								<input name= "middlename"  type="text" placeholder="Enter patient's middlename" required>
 							</div>
 							<div class="input-box">
 								<span class="details">Blood group</span>
-								<input type="text" placeholder="Enter patient's blood group" required>
+								<input  name= "bloodgroup" type="text" placeholder="Enter patient's blood group" required>
 							</div>
 							<div class="input-box">
 								<span class="details">Emergency contact number</span>
-								<input type="text" placeholder="Enter patient's emergency contact number" required>
+								<input  name= "contact_e" type="text" placeholder="Enter patient's emergency contact number" required>
 							</div>
 							<div class="input-box">
 								<span class="details">Contact number</span>
-								<input type="text" placeholder="Enter patient's contact number" required>
+								<input name= "contact"  type="text" placeholder="Enter patient's contact number" required>
 							</div>
 							<div class="input-box">
 								<span class="details">Email</span>
-								<input type="text" placeholder="Enter patient's email">
+								<input name= "email"  type="text" placeholder="Enter patient's email">
 							</div>
 							<div class="input-box">
 								<span class="details">Address</span>
-								<input type="text" placeholder="Enter patient's address" required>
+								<input name= "adress"  type="text" placeholder="Enter patient's address" required>
 							</div>
 							<div class="input-box">
 								<span class="details">Marital status</span>
-								<input type="text" placeholder="Enter patient's marital status" required>
+								<input name= "marital"  type="text" placeholder="Enter patient's marital status" required>
 							</div>
 							<div class="input-box">
 								<span class="details">Registration date</span>
-								<input type="date" required>
+								<input name= "reg_date"  type="date" required>
 							</div>
-							
+
 							<div class="button">
 								<input type="submit" value="Register">
 							</div>
-						</div>	
+						</div>
 					</form>
 					<div id = "containr">
 						<a href = "registrationdoctor.html">Registration for Doctor</a>
