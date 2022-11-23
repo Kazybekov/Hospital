@@ -22,6 +22,7 @@ const initializePassport = require("./passportConfig");
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.json());
 //app.set("front", "ejs");
 
 //app.set('view engine', 'ejs');
@@ -53,16 +54,52 @@ app.get("/login", (req, res) => {
   res.render("index2.html");
 });
 
-app.get("/makeapp", (req, res) => {
-  res.render("search.html");
-});
-
 app.get("/registerdoctor", (req, res) => {
   res.render("registrationdoctor.html");
 });
 
 app.get("/registerpatient", (req, res) => {
   res.render("registrationpatient.html");
+});
+
+app.get("/viewdoctor", (req, res) => {
+  res.render("viewdoctor.html");
+});
+
+app.put("/patient/update/temergencycontact/:iin", (req, res) => {
+
+  const {iin} =req.params;
+  //console.log(req.body.number);
+  const newn = req.body.number;
+  //const iin=123
+  const p =  pool.query('UPDATE patient SET temergencycontact = $1 WHERE tiin = $2',[newn,iin])
+
+  res.json("Emergency contact number was updated")
+
+});
+
+
+app.get("/view/doctor/:iin", async (req, res) => {
+  const {iin} =req.params;
+  //const iin=123
+  const p =  await pool.query('select * from doctor where tiin=$1',[iin])
+
+  res.json(p.rows[0]);
+
+});
+
+app.get("/viewpatient", (req, res) => {
+  res.render("viewpatient.html");
+});
+
+app.get("/view/patient/:iin", async (req, res) => {
+
+  const {iin} =req.params;
+  //const iin=123
+  const p =  await pool.query('select * from patient where tiin=$1',[iin])
+
+  res.json(p.rows[0]);
+
 });
 
 // Admin login
@@ -210,6 +247,8 @@ app.post("/register/patient", async (req, res) => {
       }
     );
 });
+
+
 
 
 
