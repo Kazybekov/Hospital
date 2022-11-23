@@ -73,6 +73,11 @@ form .input-box span.details{
    margin: 20px;
    padding-left: 250px;
  }
+ form #mapp1{
+   height: 45px;
+   margin: 20px;
+   padding-left: 200px;
+ }
  form .button input{
    height: 100%;
    width: 100px;
@@ -86,6 +91,20 @@ form .input-box span.details{
    transition: all 0.3s ease;
    background: linear-gradient(135deg, #043969, #7FFFD4 );
  }
+form .button #mapp {
+   height: 100%;
+   width: 200px;
+   border-radius: 5px;
+   border: none;
+   color: #fff;
+   font-size: 18px;
+   font-weight: 500;
+   letter-spacing: 1px;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   background: linear-gradient(135deg, #043969, #7FFFD4 );
+ 
+}
  form .button input:hover{
   background: linear-gradient(-135deg, #043969, #7FFFD4 );
   }
@@ -134,4 +153,20 @@ form .user-details .input-box{
  
 .form_radio_btn input[type=radio]:checked + label {
 	background: #7FFFD4;
+}
+
+select {
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.user-details select:focus {
+    box-shadow: 0 0 3pt 2pt #719ECE;    
 }
