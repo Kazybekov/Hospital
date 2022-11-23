@@ -53,6 +53,10 @@ app.get("/login", (req, res) => {
   res.render("index2.html");
 });
 
+app.get("/makeapp", (req, res) => {
+  res.render("search.html");
+});
+
 app.get("/registerdoctor", (req, res) => {
   res.render("registrationdoctor.html");
 });
