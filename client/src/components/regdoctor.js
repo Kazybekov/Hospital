@@ -6,13 +6,36 @@ const Regdoctor = () => {
   const [iin, setiin] = useState('');
   const [id, setid] = useState('');
 
-  const handleSubmit = event => {
+
+  const handleSubmit  = async event =>  {
       console.log('handleSubmit ran');
       event.preventDefault(); // 👈️ prevent page refresh
+
+
 
       // 👇️ access input values here
       console.log('firstName 👉️', iin);
       console.log('lastName 👉️', id);
+
+
+      let doctor = {
+        iin: iin,
+        id: id
+      };
+
+      console.log(doctor)
+      let response = await fetch('http://localhost:1234/regdoctor', {
+        mode: 'no-cors',
+        method: 'POST',
+        headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+        body: JSON.stringify(doctor)
+      });
+
+
+      //window.location = "/";
 
       // 👇️ clear all input values in the form
       setiin('');

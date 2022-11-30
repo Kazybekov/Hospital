@@ -1,5 +1,20 @@
 import React from "react";
-  
+
+// const login = async () => {
+//     try {
+//       fetch("http://localhost:1234/login"){
+//
+//       };
+//
+//
+//
+//
+//     } catch (err) {
+//       console.error(err.message);
+//     }
+//   };
+
+
 const loginpage = () => {
   return (
     <div>
@@ -27,5 +42,5 @@ const loginpage = () => {
           </div></div>
   );
 };
-  
+
 export default loginpage;
