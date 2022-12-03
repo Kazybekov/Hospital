@@ -1,5 +1,6 @@
 const express = require("express");
 const { pool } = require("./dbConfig");
+const bodyParser = require("body-parser");
 const bcrypt = require("bcrypt");
 const passport = require("passport");
 const flash = require("express-flash");
@@ -7,7 +8,6 @@ const session = require("express-session");
 require("dotenv").config();
 const app = express();
 
-const bodyParser = require("body-parser");
 
 const PORT = 1234 ;
 
@@ -31,7 +31,6 @@ app.use(
     saveUninitialized: false
   })
 );
-// Funtion inside passport which initializes passport
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
@@ -181,33 +180,42 @@ app.post("/register/patient", async (req, res) => {
     );
 });
 
-// Admin login
+// Admin/patient/doctor login
 
-app.post("/users/login", async (req,res)=>{
-
-  let log={
-    login:req.body.login,
-    password:req.body.password
+app.post("/users/login", async (req, res) => {
+  let log = {
+    login: req.body.login,
+    password: req.body.password
   }
+  console.log(log.login + " " + log.password);
 
-  console.log(log.login+" "+log.password);
-
-
-  pool.query('(select * from admin where tname=$1 and tpassword=$2)', [log.login,log.password],(err,res2)=>{
-
-    if(err){
+  pool.query('(select * from admin where tname=$1 and tpassword=$2)', [log.login, log.password], (err, res2) => {
+    if (err) {
       console.log(err);
-    }
-    try{
-      if(res2.rows[0].tname==log.login && res2.rows[0].tpassword==log.password){
-        res.render("adminpage.html");
-      }
-    }catch{
-      // alert("wrong data");
-      res.render("index2.html");
+    } else if (res2.rows[0].tname == log.login && res2.rows[0].tpassword == log.password) {
+      //res.render("adminpage.html");
     }
   });
+
+  pool.query('(select * from patientlogin where tname=$1 and tpassword=$2)', [log.login, log.password], (err, res2) => {
+    if (err) {
+      console.log(err);
+    } else if (res2.rows[0].tname == log.login && res2.rows[0].tpassword == log.password) {
+      //res.render("adminpage.html");
+    }
+  });
+  pool.query('(select * from doctorlogin where tname=$1 and tpassword=$2)', [log.login, log.password], (err, res2) => {
+    if (err) {
+      console.log(err);
+    } else if (res2.rows[0].tname == log.login && res2.rows[0].tpassword == log.password) {
+      //res.render("adminpage.html");
+    }
+  });
+  // no such a user
+
 });
+
+
 
 
 
