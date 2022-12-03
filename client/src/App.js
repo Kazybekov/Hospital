@@ -13,6 +13,7 @@ import Main from "./components/mainpage";
 import Admin from "./components/adminpage";
 import RegDoctor from "./components/registrationdoctor";
 import RegPatient from "./components/registrationpatient";
+import Search from "./components/search";
   
 function App() {
   return (
@@ -23,9 +24,11 @@ function App() {
           <Route path="/adminpage" element={<Admin />} />   
           <Route path="/registrationdoctor" element={<RegDoctor />} />   
           <Route path="/registrationpatient" element={<RegPatient />} />   
+          <Route path="/search" element={<Search />} />   
         </Routes>
       </Router>
   );
 };
   
 export default App;
+
