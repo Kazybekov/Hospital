@@ -1,22 +1,27 @@
 import { useState } from "react";
 import React from "react";
-var data = require("./speclist.json"); 
+var data = require("./speclist.json");
 class App extends React.Component {
-   
-  // Constructor 
+
+  // Constructor
   constructor(props) {
       super(props);
- 
+
       this.state = {
           items: [],
           DataisLoaded: false
       };
   }
- 
+
   // ComponentDidMount is used to
-  // execute the code 
-  componentDidMount() {
-      fetch("https://localhost:1234/views/doctor")
+  // execute the code
+  componentDidMount()  {
+    let p =    fetch("https://localhost:1234/view/doctorlist",{
+  method: 'GET', // or 'PUT'
+  headers: {
+    'Content-Type': 'application/json',
+  },
+})
           .then((res) => res.json())
           .then((json) => {
               this.setState({
@@ -24,29 +29,30 @@ class App extends React.Component {
                   DataisLoaded: true
               });
           })
+          console.log(p);
+
   }
   render() {
       const { DataisLoaded, items } = this.state;
       if (!DataisLoaded) return <div>
           <h1> Pleses wait some time.... </h1> </div> ;
- 
+
       return (
       <div className = "App">
           <h1> Fetch data from an api in react </h1>  {
-              items.map((item) => ( 
-              <ol key = { item.id } >
-                  User_Name: { item.username }, 
-                  Full_Name: { item.name }, 
-                  User_Email: { item.email } 
+              items.map((item) => (
+              <ol key = { item.tname } >
+                  // User_Name: { item.username },
+                  // Full_Name: { item.name },
+                  // User_Email: { item.email }
                   </ol>
               ))
           }
       </div>
   );
 }
-
 // ComponentDidMount is used to
-// execute the code 
+// execute the code
 }
 export default function () {
 

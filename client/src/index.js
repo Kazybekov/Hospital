@@ -12,5 +12,5 @@ import Search from './components/search';
 //ReactDOM.render(<BrowserRouter><App/></BrowserRouter>, document.getElementById('root'));
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-          <Search/>
+          <App/>
 );

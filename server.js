@@ -11,31 +11,76 @@ const app = express();
 
 const PORT = 1234 ;
 
-const initializePassport = require("./passportConfig");
+app.use(function (req, res, next) {
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
 
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
-app.use(
-  session({
-    // Key we want to keep secret which will encrypt all of our information
-    secret: process.env.SESSION_SECRET,
-    // Should we resave our session variables if nothing has changes which we dont
-    resave: false,
-    // Save empty value if there is no vaue which we do not want to do
-    saveUninitialized: false
-  })
-);
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
+});
+
+//const initializePassport = require("./passportConfig");
+//
+ app.use(bodyParser.json());
+ app.use(bodyParser.urlencoded({ extended: true }));
+// app.post('/es',es.postesdata);
+
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({
+//     extended: true
+// }));
+
+//app.engine('html', require('ejs').renderFile);
+//app.set('view engine', 'html');
+
+// app.use(
+//   session({
+//     // Key we want to keep secret which will encrypt all of our information
+//     secret: process.env.SESSION_SECRET,
+//     // Should we resave our session variables if nothing has changes which we dont
+//     resave: false,
+//     // Save empty value if there is no vaue which we do not want to do
+//     saveUninitialized: false
+//   })
+// );
+// app.use(passport.initialize());
+// app.use(passport.session());
+// app.use(flash());
 
 
+
+app.get("/spec", async(req,res) => {
+
+  const p = await pool.query('select doctor.tcategory from doctor');
+  //console.log(p.rowCount);
+  // for (let i=1;i<=p.rowCount;i++){
+  // p.rows[i].id=i;
+  // }
+
+  res.json(p.rows);
+
+})
+
+
+
+app.get("/view/doctors", async (req, res) => {
+  //const iin=123
+  const p =  await pool.query('select doctor.tname,doctor.tphoto,doctor.trating, doctor.tprice from doctor;')
+
+  res.json(p.rows[0]);
+
+});
 
 // update patient emergency number
 
@@ -52,10 +97,19 @@ app.put("/patient/update/temergencycontact/:iin", (req, res) => {
   console.log("Emergency contact number was updated")
 
   res.json("Emergency contact number was updated")
-
+d
 });
 
 // view doctor
+
+app.get("/view/doctorlist", async (req, res) => {
+  //const {iin} =req.params;
+  //const iin=123
+  const p =  await pool.query('select doctor.tname from doctor')
+
+  res.json(p.rows);
+
+});
 
 app.get("/view/doctor/:iin", async (req, res) => {
   const {iin} =req.params;
@@ -118,7 +172,7 @@ app.post("/register/doctor",  (req, res) => {
                 throw err;
               }
               req.flash("success_msg", "Doctor was registered");
-              res.render("adminpage.html");
+              res.json("added")
             }
           );
 
@@ -183,35 +237,53 @@ app.post("/register/patient", async (req, res) => {
 // Admin/patient/doctor login
 
 app.post("/users/login", async (req, res) => {
+
+
+
+  console.log(req.body)
+  //
   let log = {
     login: req.body.login,
     password: req.body.password
   }
-  console.log(log.login + " " + log.password);
+  //
+  console.log(log.login, log.password)
+  //
+  // console.log(log.login + " " + log.password);
+  if(log.login!=log.password){
+    res.json("NO");
+  }
+  else{
 
-  pool.query('(select * from admin where tname=$1 and tpassword=$2)', [log.login, log.password], (err, res2) => {
+  pool.query('SELECT * FROM admin WHERE "tname" = $1 AND "tpassword" = $2', [log.login,log.password], (err, res2) => {
     if (err) {
+      console.log("ingore");
       console.log(err);
     } else if (res2.rows[0].tname == log.login && res2.rows[0].tpassword == log.password) {
+      let answer={
+        message:"SUCCESS"
+      }
+      res.json(answer)
       //res.render("adminpage.html");
     }
   });
-
-  pool.query('(select * from patientlogin where tname=$1 and tpassword=$2)', [log.login, log.password], (err, res2) => {
-    if (err) {
-      console.log(err);
-    } else if (res2.rows[0].tname == log.login && res2.rows[0].tpassword == log.password) {
-      //res.render("adminpage.html");
-    }
-  });
-  pool.query('(select * from doctorlogin where tname=$1 and tpassword=$2)', [log.login, log.password], (err, res2) => {
-    if (err) {
-      console.log(err);
-    } else if (res2.rows[0].tname == log.login && res2.rows[0].tpassword == log.password) {
-      //res.render("adminpage.html");
-    }
-  });
-  // no such a user
+}
+  //
+  // pool.query('(select * from patientlogin where tname=$1 and tpassword=$2)', [log.login, log.password], (err, res2) => {
+  //   if (err) {
+  //     console.log(err);
+  //   } else if (res2.rows[0].tname == log.login && res2.rows[0].tpassword == log.password) {
+  //     res.message("SUCCESS")
+  //   }
+  // });
+  // pool.query('(select * from doctorlogin where tname=$1 and tpassword=$2)', [log.login, log.password], (err, res2) => {
+  //   if (err) {
+  //     console.log(err);
+  //   } else if (res2.rows[0].tname == log.login && res2.rows[0].tpassword == log.password) {
+  //     res.message("SUCCESS")
+  //   }
+  // });
+  // // no such a user
 
 });
 
@@ -219,19 +291,19 @@ app.post("/users/login", async (req, res) => {
 
 
 
-function checkAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return res.redirect("/users/dashboard");
-  }
-  next();
-}
-
-function checkNotAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect("/users/login");
-}
+// function checkAuthenticated(req, res, next) {
+//   if (req.isAuthenticated()) {
+//     return res.redirect("/users/dashboard");
+//   }
+//   next();
+// }
+//
+// function checkNotAuthenticated(req, res, next) {
+//   if (req.isAuthenticated()) {
+//     return next();
+//   }
+//   res.redirect("/users/login");
+// }
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
