@@ -7,6 +7,10 @@ const getloginpage = async () => {
   };
 
 function adminpage() {
+  const openInNewTab = url => {
+     window.open(url, '_blank', 'noopener,noreferrer');
+   };
+
   return (
     <div>
         <meta charSet="UTF-8" />
@@ -36,10 +40,11 @@ function adminpage() {
         </div>
         <div className="container" id="container3">
           <div className="block" id="block3">
-            <button onclick="location.href='/registerdoctor'" className="button button1"> Register Doctor</button>
+            <button onClick={() => openInNewTab('http://localhost:3000/registrationdoctor')} className="button button1"> Register Doctor </button>
           </div>
           <div className="block" id="block4">
-            <button onclick="location.href='/registerpatient'" className="button button2">Register Patient</button>
+            <button onClick={() => openInNewTab('http://localhost:3000/registrationpatient')} className="button button2"> Register Patient </button>
+
           </div>
         </div>
         <a> Doctors </a>
