@@ -6,7 +6,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-  
+
 
 import Login from "./components/loginpage";
 import Main from "./components/mainpage";
@@ -14,21 +14,22 @@ import Admin from "./components/adminpage";
 import RegDoctor from "./components/registrationdoctor";
 import RegPatient from "./components/registrationpatient";
 import Search from "./components/search";
-  
+import Patientpage from "./components/patientpage";
+
 function App() {
   return (
       <Router>
         <Routes>
           <Route exact path="/" element={<Main />} />
-          <Route path="/loginpage" element={<Login />} />   
-          <Route path="/adminpage" element={<Admin />} />   
-          <Route path="/registrationdoctor" element={<RegDoctor />} />   
-          <Route path="/registrationpatient" element={<RegPatient />} />   
-          <Route path="/search" element={<Search />} />   
+          <Route path="/loginpage" element={<Login />} />
+          <Route path="/adminpage" element={<Admin />} />
+          <Route path="/registrationdoctor" element={<RegDoctor />} />
+          <Route path="/registrationpatient" element={<RegPatient />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/patientpage" element={<Patientpage />} />
         </Routes>
       </Router>
   );
 };
-  
-export default App;
 
+export default App;
