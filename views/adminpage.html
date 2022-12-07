@@ -1,28 +1,29 @@
 <html lang="en" dir="ltr">
 	<head>
 		<meta charset="UTF-8">
+		<title>DenSys.me</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="/css/styleadminpage.css">
+		<link rel="stylesheet" href="styleadminpage.css">
 	</head>
 	<body>
 		<header>
 			<div>
-				<a href="/">DenSys.me</a>
+				<a href="index.html">DenSys.me</a>
 			</div>
 		</header>
 		<div class = "container" id = "container1">
-			<a> Admin page </a>
+			<a id = "adm">Admin page</a>
 		</div>
 		<div class = "container" id = "container2">
 			<div class = "block" id = "block1">
-				<img src = "https://cdn-icons-png.flaticon.com/512/306/306473.png" width="300", height="280">
+				<img src = "306473.png" width="300", height="280">
 			</div>
 			<div class = "block" id = "block2" >
 				<ul>
 					<li>Name:  Admin</li>
 					<li>Surname: Admin</li>
-					<li>Age: 33 </li>
-					<li>User ID: admin123 </li>
+					<li>Age: </li>
+					<li>User ID: admin123</li>
 					<li>Email: admin@nu.edu.kz</li>
 					<li>Phone number:  8777 777 77 77</li>
 				</ul>
@@ -31,20 +32,100 @@
 		</div>
 		<div class = "container" id = "container3" >
 			<div class = "block" id = "block3" >
-				<button onclick="location.href='/registerdoctor'" class="button button1"> Register Doctor</button>
+				<button onclick="location.href='registrationdoctor.html'" class="button button1">Register Doctor</button>
 			</div>
 			<div class = "block" id = "block4">
-				<button onclick="location.href='/registerpatient'" class="button button2" >Register Patient</button>
+				<button onclick="location.href='registrationpatient.html'" class="button button2" >Register Patient</button>
 			</div>
         </div>
-
+	
 		<a> Doctors </a>
 		<div class = "container" id = "container4" >
-
+			<table style="width:100%">
+				<tr>
+					<th>Doctor ID</th>
+					<th>Name</th>
+					<th>Surname</th>
+					<th>View Doctor</th>
+				</tr>
+				<tr>
+					<td>011</td>
+					<td>Maria</td>
+					<td>Alman</td>
+					<td><button onclick="location.href='viewd1.html'">View</button></td>
+				</tr>
+				<tr>
+					<td>023</td>
+					<td>Larisa</td>
+					<td>Rosso</td>
+					<td><button onclick="location.href='viewd2.html'">View</button></td>
+				</tr>
+				<tr>
+					<td>087</td>
+					<td>Andrei</td>
+					<td>Linuk</td>
+					<td><button onclick="location.href='viewd3.html'">View</button></td>
+				</tr>
+				<tr>
+					<td>045</td>
+					<td>Maksat</td>
+					<td>Temirbay</td>
+					<td><button onclick="location.href='viewd4.html'">View</button></td>
+				</tr>
+				<tr>
+					<td>066</td>
+					<td>Aidana</td>
+					<td>Salamat</td>
+					<td><button onclick="location.href='viewd5.html'">View</button></td>
+				</tr>
+				<tr>
+					<td>078</td>
+					<td>Galiya</td>
+					<td>Taizhan</td>
+					<td><button onclick="location.href='viewd6.html'">View</button></td>
+				</tr>
+			</table>
         </div>
 		<a> Patients </a>
 		<div class = "container" id = "container5" >
-
+		<table style="width:100%">
+				<tr>
+					<th>Patient ID</th>
+					<th>Name</th>
+					<th>Surname</th>
+					<th>View Patient</th>
+				</tr>
+				<tr>
+					<td>10001</td>
+					<td>Galym</td>
+					<td>Aidyngali</td>
+					<td><button onclick="location.href='viewp1.html'">View</button></td>
+				</tr>
+				<tr>
+					<td>10002</td>
+					<td>Samal</td>
+					<td>Bolatkyzy</td>
+					<td><button onclick="location.href='viewp2.html'">View</button></td>
+				</tr>
+				<tr>
+					<td>10003</td>
+					<td>Timur</td>
+					<td>Ratmir</td>
+					<td><button onclick="location.href='viewp3.html'">View</button></td>
+				</tr>
+				<tr>
+					<td>10005</td>
+					<td>Asem</td>
+					<td>Karin</td>
+					<td><button onclick="location.href='viewp5.html'">View</button></td>
+				</tr>
+				<tr>
+					<td>10006</td>
+					<td>Erik</td>
+					<td>Lamanov</td>
+					<td><button onclick="location.href='viewp6.html'">View</button></td>
+				</tr>
+			</table>
         </div>
 	</body>
 </html>
